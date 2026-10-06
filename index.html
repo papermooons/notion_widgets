@@ -15,6 +15,10 @@
   <style>
     @import url("https://fonts.googleapis.com/css2?family=Lexend:wght@400;700&display=swap");
 
+    /* =========================
+       GRUNDSTIL
+       ========================= */
+
     * {
       box-sizing: border-box;
       margin: 0;
@@ -25,29 +29,45 @@
     body {
       width: 100%;
       height: 100%;
+      margin: 0;
+      padding: 0;
     }
 
     body {
       font-family: "Lexend", sans-serif;
-      background-color: #ffffff;
+
+      /* WICHTIG: Hintergrund wirklich weiß */
+      background: #ffffff !important;
       color: #000000;
+
       overflow: hidden;
     }
 
+
     /* =========================
-       GALERIE
+       SLIDER
        ========================= */
 
     .slider {
       position: relative;
+
       width: 100vw;
       height: 100vh;
+
       overflow: hidden;
-      background-color: #ffffff;
+
+      /* Weißer Hintergrund */
+      background: #ffffff !important;
     }
+
+
+    /* =========================
+       SLIDES
+       ========================= */
 
     .slide {
       position: absolute;
+
       top: 0;
       left: 0;
 
@@ -55,29 +75,47 @@
       height: 100%;
 
       /*
-        Startposition:
+        WICHTIG:
+
+        contain sorgt dafür, dass das komplette
+        Bild sichtbar bleibt.
+
+        Bereiche außerhalb des Bildes bleiben weiß.
+      */
+
+      background-color: #ffffff !important;
+
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: contain;
+
+      /*
+        Anfangszustand:
         leicht nach rechts verschoben
         und unsichtbar
       */
+
       opacity: 0;
-      transform: translateX(40px);
+      transform: translateX(50px);
 
       /*
-        Langsamer und weicher Übergang
+        Langsamer Fade + Slide
       */
+
       transition:
         opacity 2.5s ease-in-out,
         transform 2.5s ease-in-out;
 
-      background-color: #ffffff;
+      z-index: 1;
     }
 
-    /*
-      Aktuelles Bild
-    */
+
+    /* Aktuelles Bild */
+
     .slide.current {
       opacity: 1;
       transform: translateX(0);
+
       z-index: 2;
     }
 
@@ -87,43 +125,43 @@
        ========================= */
 
     .slide:nth-child(1) {
-      background: url("motivtion (1).png") no-repeat center top / cover;
+      background-image: url("motivtion (1).png");
     }
 
     .slide:nth-child(2) {
-      background: url("motivtion (2).png") no-repeat center top / cover;
+      background-image: url("motivtion (2).png");
     }
 
     .slide:nth-child(3) {
-      background: url("motivtion (3).png") no-repeat center top / cover;
+      background-image: url("motivtion (3).png");
     }
 
     .slide:nth-child(4) {
-      background: url("motivtion (4).png") no-repeat center top / cover;
+      background-image: url("motivtion (4).png");
     }
 
     .slide:nth-child(5) {
-      background: url("motivtion (5).png") no-repeat center top / cover;
+      background-image: url("motivtion (5).png");
     }
 
     .slide:nth-child(6) {
-      background: url("motivtion (6).png") no-repeat center top / cover;
+      background-image: url("motivtion (6).png");
     }
 
     .slide:nth-child(7) {
-      background: url("motivtion (7).png") no-repeat center top / cover;
+      background-image: url("motivtion (7).png");
     }
 
     .slide:nth-child(8) {
-      background: url("motivtion (8).png") no-repeat center top / cover;
+      background-image: url("motivtion (8).png");
     }
 
     .slide:nth-child(9) {
-      background: url("motivtion (9).png") no-repeat center top / cover;
+      background-image: url("motivtion (9).png");
     }
 
     .slide:nth-child(10) {
-      background: url("motivtion (10).png") no-repeat center top / cover;
+      background-image: url("motivtion (10).png");
     }
 
 
@@ -132,43 +170,43 @@
        ========================= */
 
     .slide:nth-child(11) {
-      background: url("motivtion (11).png") no-repeat center top / cover;
+      background-image: url("motivtion (11).png");
     }
 
     .slide:nth-child(12) {
-      background: url("motivtion (12).png") no-repeat center top / cover;
+      background-image: url("motivtion (12).png");
     }
 
     .slide:nth-child(13) {
-      background: url("motivtion (13).png") no-repeat center top / cover;
+      background-image: url("motivtion (13).png");
     }
 
     .slide:nth-child(14) {
-      background: url("motivtion (14).png") no-repeat center top / cover;
+      background-image: url("motivtion (14).png");
     }
 
     .slide:nth-child(15) {
-      background: url("motivtion (15).png") no-repeat center top / cover;
+      background-image: url("motivtion (15).png");
     }
 
     .slide:nth-child(16) {
-      background: url("motivtion (16).png") no-repeat center top / cover;
+      background-image: url("motivtion (16).png");
     }
 
     .slide:nth-child(17) {
-      background: url("motivtion (17).png") no-repeat center top / cover;
+      background-image: url("motivtion (17).png");
     }
 
     .slide:nth-child(18) {
-      background: url("motivtion (18).png") no-repeat center top / cover;
+      background-image: url("motivtion (18).png");
     }
 
     .slide:nth-child(19) {
-      background: url("motivtion (19).png") no-repeat center top / cover;
+      background-image: url("motivtion (19).png");
     }
 
     .slide:nth-child(20) {
-      background: url("motivtion (20).png") no-repeat center top / cover;
+      background-image: url("motivtion (20).png");
     }
 
 
@@ -177,43 +215,43 @@
        ========================= */
 
     .slide:nth-child(21) {
-      background: url("motivtion (21).png") no-repeat center top / cover;
+      background-image: url("motivtion (21).png");
     }
 
     .slide:nth-child(22) {
-      background: url("motivtion (22).png") no-repeat center top / cover;
+      background-image: url("motivtion (22).png");
     }
 
     .slide:nth-child(23) {
-      background: url("motivtion (23).png") no-repeat center top / cover;
+      background-image: url("motivtion (23).png");
     }
 
     .slide:nth-child(24) {
-      background: url("motivtion (24).png") no-repeat center top / cover;
+      background-image: url("motivtion (24).png");
     }
 
     .slide:nth-child(25) {
-      background: url("motivtion (25).png") no-repeat center top / cover;
+      background-image: url("motivtion (25).png");
     }
 
     .slide:nth-child(26) {
-      background: url("motivtion (26).png") no-repeat center top / cover;
+      background-image: url("motivtion (26).png");
     }
 
     .slide:nth-child(27) {
-      background: url("motivtion (27).png") no-repeat center top / cover;
+      background-image: url("motivtion (27).png");
     }
 
     .slide:nth-child(28) {
-      background: url("motivtion (28).png") no-repeat center top / cover;
+      background-image: url("motivtion (28).png");
     }
 
     .slide:nth-child(29) {
-      background: url("motivtion (29).png") no-repeat center top / cover;
+      background-image: url("motivtion (29).png");
     }
 
     .slide:nth-child(30) {
-      background: url("motivtion (30).png") no-repeat center top / cover;
+      background-image: url("motivtion (30).png");
     }
 
 
@@ -222,43 +260,43 @@
        ========================= */
 
     .slide:nth-child(31) {
-      background: url("motivtion (31).png") no-repeat center top / cover;
+      background-image: url("motivtion (31).png");
     }
 
     .slide:nth-child(32) {
-      background: url("motivtion (32).png") no-repeat center top / cover;
+      background-image: url("motivtion (32).png");
     }
 
     .slide:nth-child(33) {
-      background: url("motivtion (33).png") no-repeat center top / cover;
+      background-image: url("motivtion (33).png");
     }
 
     .slide:nth-child(34) {
-      background: url("motivtion (34).png") no-repeat center top / cover;
+      background-image: url("motivtion (34).png");
     }
 
     .slide:nth-child(35) {
-      background: url("motivtion (35).png") no-repeat center top / cover;
+      background-image: url("motivtion (35).png");
     }
 
     .slide:nth-child(36) {
-      background: url("motivtion (36).png") no-repeat center top / cover;
+      background-image: url("motivtion (36).png");
     }
 
     .slide:nth-child(37) {
-      background: url("motivtion (37).png") no-repeat center top / cover;
+      background-image: url("motivtion (37).png");
     }
 
     .slide:nth-child(38) {
-      background: url("motivtion (38).png") no-repeat center top / cover;
+      background-image: url("motivtion (38).png");
     }
 
     .slide:nth-child(39) {
-      background: url("motivtion (39).png") no-repeat center top / cover;
+      background-image: url("motivtion (39).png");
     }
 
     .slide:nth-child(40) {
-      background: url("motivtion (40).png") no-repeat center top / cover;
+      background-image: url("motivtion (40).png");
     }
 
 
@@ -267,43 +305,43 @@
        ========================= */
 
     .slide:nth-child(41) {
-      background: url("motivtion (41).png") no-repeat center top / cover;
+      background-image: url("motivtion (41).png");
     }
 
     .slide:nth-child(42) {
-      background: url("motivtion (42).png") no-repeat center top / cover;
+      background-image: url("motivtion (42).png");
     }
 
     .slide:nth-child(43) {
-      background: url("motivtion (43).png") no-repeat center top / cover;
+      background-image: url("motivtion (43).png");
     }
 
     .slide:nth-child(44) {
-      background: url("motivtion (44).png") no-repeat center top / cover;
+      background-image: url("motivtion (44).png");
     }
 
     .slide:nth-child(45) {
-      background: url("motivtion (45).png") no-repeat center top / cover;
+      background-image: url("motivtion (45).png");
     }
 
     .slide:nth-child(46) {
-      background: url("motivtion (46).png") no-repeat center top / cover;
+      background-image: url("motivtion (46).png");
     }
 
     .slide:nth-child(47) {
-      background: url("motivtion (47).png") no-repeat center top / cover;
+      background-image: url("motivtion (47).png");
     }
 
     .slide:nth-child(48) {
-      background: url("motivtion (48).png") no-repeat center top / cover;
+      background-image: url("motivtion (48).png");
     }
 
     .slide:nth-child(49) {
-      background: url("motivtion (49).png") no-repeat center top / cover;
+      background-image: url("motivtion (49).png");
     }
 
     .slide:nth-child(50) {
-      background: url("motivtion (50).png") no-repeat center top / cover;
+      background-image: url("motivtion (50).png");
     }
 
 
@@ -312,43 +350,43 @@
        ========================= */
 
     .slide:nth-child(51) {
-      background: url("motivtion (51).png") no-repeat center top / cover;
+      background-image: url("motivtion (51).png");
     }
 
     .slide:nth-child(52) {
-      background: url("motivtion (52).png") no-repeat center top / cover;
+      background-image: url("motivtion (52).png");
     }
 
     .slide:nth-child(53) {
-      background: url("motivtion (53).png") no-repeat center top / cover;
+      background-image: url("motivtion (53).png");
     }
 
     .slide:nth-child(54) {
-      background: url("motivtion (54).png") no-repeat center top / cover;
+      background-image: url("motivtion (54).png");
     }
 
     .slide:nth-child(55) {
-      background: url("motivtion (55).png") no-repeat center top / cover;
+      background-image: url("motivtion (55).png");
     }
 
     .slide:nth-child(56) {
-      background: url("motivtion (56).png") no-repeat center top / cover;
+      background-image: url("motivtion (56).png");
     }
 
     .slide:nth-child(57) {
-      background: url("motivtion (57).png") no-repeat center top / cover;
+      background-image: url("motivtion (57).png");
     }
 
     .slide:nth-child(58) {
-      background: url("motivtion (58).png") no-repeat center top / cover;
+      background-image: url("motivtion (58).png");
     }
 
     .slide:nth-child(59) {
-      background: url("motivtion (59).png") no-repeat center top / cover;
+      background-image: url("motivtion (59).png");
     }
 
     .slide:nth-child(60) {
-      background: url("motivtion (60).png") no-repeat center top / cover;
+      background-image: url("motivtion (60).png");
     }
 
 
@@ -357,43 +395,43 @@
        ========================= */
 
     .slide:nth-child(61) {
-      background: url("motivtion (61).png") no-repeat center top / cover;
+      background-image: url("motivtion (61).png");
     }
 
     .slide:nth-child(62) {
-      background: url("motivtion (62).png") no-repeat center top / cover;
+      background-image: url("motivtion (62).png");
     }
 
     .slide:nth-child(63) {
-      background: url("motivtion (63).png") no-repeat center top / cover;
+      background-image: url("motivtion (63).png");
     }
 
     .slide:nth-child(64) {
-      background: url("motivtion (64).png") no-repeat center top / cover;
+      background-image: url("motivtion (64).png");
     }
 
     .slide:nth-child(65) {
-      background: url("motivtion (65).png") no-repeat center top / cover;
+      background-image: url("motivtion (65).png");
     }
 
     .slide:nth-child(66) {
-      background: url("motivtion (66).png") no-repeat center top / cover;
+      background-image: url("motivtion (66).png");
     }
 
     .slide:nth-child(67) {
-      background: url("motivtion (67).png") no-repeat center top / cover;
+      background-image: url("motivtion (67).png");
     }
 
     .slide:nth-child(68) {
-      background: url("motivtion (68).png") no-repeat center top / cover;
+      background-image: url("motivtion (68).png");
     }
 
     .slide:nth-child(69) {
-      background: url("motivtion (69).png") no-repeat center top / cover;
+      background-image: url("motivtion (69).png");
     }
 
     .slide:nth-child(70) {
-      background: url("motivtion (70).png") no-repeat center top / cover;
+      background-image: url("motivtion (70).png");
     }
 
 
@@ -402,43 +440,43 @@
        ========================= */
 
     .slide:nth-child(71) {
-      background: url("motivtion (71).png") no-repeat center top / cover;
+      background-image: url("motivtion (71).png");
     }
 
     .slide:nth-child(72) {
-      background: url("motivtion (72).png") no-repeat center top / cover;
+      background-image: url("motivtion (72).png");
     }
 
     .slide:nth-child(73) {
-      background: url("motivtion (73).png") no-repeat center top / cover;
+      background-image: url("motivtion (73).png");
     }
 
     .slide:nth-child(74) {
-      background: url("motivtion (74).png") no-repeat center top / cover;
+      background-image: url("motivtion (74).png");
     }
 
     .slide:nth-child(75) {
-      background: url("motivtion (75).png") no-repeat center top / cover;
+      background-image: url("motivtion (75).png");
     }
 
     .slide:nth-child(76) {
-      background: url("motivtion (76).png") no-repeat center top / cover;
+      background-image: url("motivtion (76).png");
     }
 
     .slide:nth-child(77) {
-      background: url("motivtion (77).png") no-repeat center top / cover;
+      background-image: url("motivtion (77).png");
     }
 
     .slide:nth-child(78) {
-      background: url("motivtion (78).png") no-repeat center top / cover;
+      background-image: url("motivtion (78).png");
     }
 
     .slide:nth-child(79) {
-      background: url("motivtion (79).png") no-repeat center top / cover;
+      background-image: url("motivtion (79).png");
     }
 
     .slide:nth-child(80) {
-      background: url("motivtion (80).png") no-repeat center top / cover;
+      background-image: url("motivtion (80).png");
     }
 
 
@@ -447,48 +485,60 @@
        ========================= */
 
     .slide:nth-child(81) {
-      background: url("motivtion (81).png") no-repeat center top / cover;
+      background-image: url("motivtion (81).png");
     }
 
     .slide:nth-child(82) {
-      background: url("motivtion (82).png") no-repeat center top / cover;
+      background-image: url("motivtion (82).png");
     }
 
     .slide:nth-child(83) {
-      background: url("motivtion (83).png") no-repeat center top / cover;
+      background-image: url("motivtion (83).png");
     }
 
     .slide:nth-child(84) {
-      background: url("motivtion.png") no-repeat center top / cover;
+      background-image: url("motivtion.png");
     }
 
 
     /* =========================
-       NAVIGATION
+       BUTTONS
        ========================= */
 
     .buttons {
       position: absolute;
-      inset: 0;
+
+      top: 0;
+      left: 0;
+
+      width: 100%;
+      height: 100%;
+
+      z-index: 100;
+
       pointer-events: none;
-      z-index: 10;
     }
 
     .buttons button {
       position: absolute;
 
       top: 50%;
+
+      width: 44px;
+      height: 44px;
+
       transform: translateY(-50%);
 
-      width: 42px;
-      height: 42px;
-
       border: 2px solid #000000;
-      background-color: rgba(255, 255, 255, 0.75);
+
+      background: rgba(255, 255, 255, 0.85);
+
       color: #000000;
 
       cursor: pointer;
+
       border-radius: 50%;
+
       outline: none;
 
       pointer-events: auto;
@@ -498,7 +548,7 @@
       justify-content: center;
 
       transition:
-        background-color 0.3s ease,
+        background 0.3s ease,
         color 0.3s ease,
         transform 0.3s ease;
     }
@@ -512,21 +562,22 @@
     }
 
     .buttons button:hover {
-      background-color: #000000;
+      background: #000000;
       color: #ffffff;
-      transform: translateY(-50%) scale(1.08);
+
+      transform: translateY(-50%) scale(1.1);
     }
 
 
     /* =========================
-       MOBILE
+       HANDY
        ========================= */
 
     @media (max-width: 640px) {
 
       .buttons button {
-        width: 36px;
-        height: 36px;
+        width: 38px;
+        height: 38px;
       }
 
       .buttons button#prev {
@@ -541,7 +592,7 @@
 
 
     /* =========================
-       REDUZIERTE BEWEGUNG
+       REDUCED MOTION
        ========================= */
 
     @media (prefers-reduced-motion: reduce) {
@@ -556,11 +607,16 @@
       }
 
     }
+
   </style>
 </head>
 
 
 <body>
+
+  <!-- =========================
+       GALERIE
+       ========================= -->
 
   <div class="slider">
 
@@ -660,7 +716,9 @@
   </div>
 
 
-  <!-- Navigation -->
+  <!-- =========================
+       NAVIGATION
+       ========================= -->
 
   <div class="buttons">
 
@@ -675,35 +733,38 @@
   </div>
 
 
-  <script>
+  <!-- =========================
+       JAVASCRIPT
+       ========================= -->
 
-    /*
-      ==========================================
-      EINSTELLUNGEN
-      ==========================================
-    */
+  <script>
 
     const slides = document.querySelectorAll(".slide");
 
     const nextButton = document.getElementById("next");
     const prevButton = document.getElementById("prev");
 
+    /*
+      Automatischer Wechsel aktiviert
+    */
+
     const auto = true;
 
     /*
       30 Sekunden pro Bild
 
-      30.000 Millisekunden = 30 Sekunden
+      30000 Millisekunden = 30 Sekunden
     */
+
     const intervalTime = 30000;
 
     let slideInterval;
 
 
     /*
-      ==========================================
+      =========================
       NÄCHSTES BILD
-      ==========================================
+      =========================
     */
 
     const nextSlide = () => {
@@ -726,9 +787,9 @@
 
 
     /*
-      ==========================================
+      =========================
       VORHERIGES BILD
-      ==========================================
+      =========================
     */
 
     const prevSlide = () => {
@@ -751,9 +812,9 @@
 
 
     /*
-      ==========================================
+      =========================
       NEXT BUTTON
-      ==========================================
+      =========================
     */
 
     nextButton.addEventListener("click", () => {
@@ -775,9 +836,9 @@
 
 
     /*
-      ==========================================
+      =========================
       PREVIOUS BUTTON
-      ==========================================
+      =========================
     */
 
     prevButton.addEventListener("click", () => {
@@ -799,9 +860,9 @@
 
 
     /*
-      ==========================================
+      =========================
       AUTOMATISCHER WECHSEL
-      ==========================================
+      =========================
     */
 
     if (auto) {
