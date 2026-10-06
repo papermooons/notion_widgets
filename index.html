@@ -13,7 +13,9 @@
   >
 
   <style>
+
     @import url("https://fonts.googleapis.com/css2?family=Lexend:wght@400;700&display=swap");
+
 
     /* ========================================
        GRUNDSTIL
@@ -494,6 +496,9 @@
 
     /* ========================================
        NAVIGATION
+       
+       Die Pfeile sind standardmäßig
+       unsichtbar.
        ======================================== */
 
     .buttons {
@@ -508,8 +513,32 @@
       z-index: 100;
 
       pointer-events: none;
+
+      /*
+        Unsichtbar
+      */
+      opacity: 0;
+
+      /*
+        Sanftes Ein-/Ausblenden
+      */
+      transition: opacity 0.4s ease;
     }
 
+
+    /*
+      Sobald die Maus über der Galerie ist,
+      werden die Pfeile sichtbar.
+    */
+
+    .slider:hover + .buttons {
+      opacity: 1;
+    }
+
+
+    /* ========================================
+       PFEILE
+       ======================================== */
 
     .buttons button {
       position: absolute;
@@ -536,7 +565,9 @@
       pointer-events: auto;
 
       display: flex;
+
       align-items: center;
+
       justify-content: center;
 
       transition:
@@ -546,15 +577,27 @@
     }
 
 
+    /*
+      Linker Pfeil
+    */
+
     .buttons button#prev {
       left: 20px;
     }
 
 
+    /*
+      Rechter Pfeil
+    */
+
     .buttons button#next {
       right: 20px;
     }
 
+
+    /*
+      Hover über Pfeil
+    */
 
     .buttons button:hover {
       background: #000000;
@@ -567,21 +610,15 @@
 
     /* ========================================
        MOBILE
+       
+       Auf Touch-Geräten keine Pfeile,
+       da es dort keinen echten Hover gibt.
        ======================================== */
 
-    @media (max-width: 640px) {
+    @media (hover: none) {
 
-      .buttons button {
-        width: 38px;
-        height: 38px;
-      }
-
-      .buttons button#prev {
-        left: 10px;
-      }
-
-      .buttons button#next {
-        right: 10px;
+      .buttons {
+        display: none;
       }
 
     }
@@ -597,6 +634,10 @@
         transition: opacity 0.5s ease;
       }
 
+      .buttons {
+        transition: opacity 0.2s ease;
+      }
+
     }
 
   </style>
@@ -604,6 +645,7 @@
 
 
 <body>
+
 
   <!-- ========================================
        GALERIE
@@ -733,6 +775,7 @@
     const slides = document.querySelectorAll(".slide");
 
     const nextButton = document.getElementById("next");
+
     const prevButton = document.getElementById("prev");
 
 
@@ -743,24 +786,18 @@
     /*
       30 Sekunden pro Bild
     */
-    const intervalTime = 30000;
 
-    /*
-      Zeit für den Fade
-      Muss kleiner als intervalTime sein.
-    */
-    const fadeTime = 3000;
+    const intervalTime = 30000;
 
     let slideInterval;
 
-    /*
-      Hier wird die zufällige Reihenfolge gespeichert.
-    */
-    let randomOrder = [];
 
     /*
-      Position innerhalb der zufälligen Reihenfolge.
+      Zufällige Reihenfolge
     */
+
+    let randomOrder = [];
+
     let currentPosition = 0;
 
 
@@ -770,13 +807,6 @@
 
     function createRandomOrder() {
 
-      /*
-        Array mit allen Bildnummern erstellen.
-        Beispiel:
-
-        [0, 1, 2, 3, ... 83]
-      */
-
       randomOrder = Array.from(
         { length: slides.length },
         (_, index) => index
@@ -785,16 +815,18 @@
 
       /*
         Fisher-Yates Shuffle
-
-        Dadurch wird die Reihenfolge
-        wirklich zufällig gemischt.
       */
 
-      for (let i = randomOrder.length - 1; i > 0; i--) {
+      for (
+        let i = randomOrder.length - 1;
+        i > 0;
+        i--
+      ) {
 
         const j = Math.floor(
           Math.random() * (i + 1)
         );
+
 
         [
           randomOrder[i],
@@ -810,22 +842,22 @@
 
 
     /* ========================================
-       ERSTEN ZUFÄLLIGEN SLIDE STARTEN
+       GALERIE STARTEN
        ======================================== */
 
     function startRandomGallery() {
 
       createRandomOrder();
 
-      /*
-        Erstes zufälliges Bild auswählen
-      */
-
       currentPosition = 0;
 
+
       slides.forEach(slide => {
+
         slide.classList.remove("current");
+
       });
+
 
       slides[
         randomOrder[currentPosition]
@@ -835,7 +867,7 @@
 
 
     /* ========================================
-       NÄCHSTES ZUFÄLLIGES BILD
+       NÄCHSTES BILD
        ======================================== */
 
     function nextSlide() {
@@ -844,38 +876,42 @@
 
 
       /*
-        Wenn alle 84 Bilder gesehen wurden,
-        wird eine komplett neue Reihenfolge
-        erstellt.
+        Wenn alle Bilder gezeigt wurden,
+        neue zufällige Reihenfolge erstellen.
       */
 
-      if (currentPosition >= randomOrder.length) {
+      if (
+        currentPosition >=
+        randomOrder.length
+      ) {
+
+        const oldCurrent =
+          randomOrder[
+            randomOrder.length - 1
+          ];
+
 
         createRandomOrder();
 
         currentPosition = 0;
 
+
         /*
           Verhindern, dass das letzte Bild
-          des alten Durchlaufs direkt wieder
-          als erstes Bild erscheint.
+          direkt wieder als erstes kommt.
         */
-
-        const previousSlide =
-          document.querySelector(".current");
-
-        const previousIndex =
-          Array.from(slides).indexOf(previousSlide);
 
         if (
           randomOrder.length > 1 &&
-          randomOrder[0] === previousIndex
+          randomOrder[0] === oldCurrent
         ) {
 
           const randomIndex =
             Math.floor(
-              Math.random() * (randomOrder.length - 1)
+              Math.random() *
+              (randomOrder.length - 1)
             ) + 1;
+
 
           [
             randomOrder[0],
@@ -897,17 +933,23 @@
       const current =
         document.querySelector(".current");
 
+
       if (current) {
+
         current.classList.remove("current");
+
       }
 
 
       /*
-        Neues zufälliges Bild einblenden
+        Neues Bild anzeigen
       */
 
       const next =
-        slides[randomOrder[currentPosition]];
+        slides[
+          randomOrder[currentPosition]
+        ];
+
 
       next.classList.add("current");
 
@@ -923,11 +965,6 @@
       currentPosition--;
 
 
-      /*
-        Wenn wir am Anfang der Reihenfolge
-        angekommen sind, springen wir ans Ende.
-      */
-
       if (currentPosition < 0) {
 
         currentPosition =
@@ -939,13 +976,19 @@
       const current =
         document.querySelector(".current");
 
+
       if (current) {
+
         current.classList.remove("current");
+
       }
 
 
       const previous =
-        slides[randomOrder[currentPosition]];
+        slides[
+          randomOrder[currentPosition]
+        ];
+
 
       previous.classList.add("current");
 
@@ -960,6 +1003,7 @@
 
       clearInterval(slideInterval);
 
+
       slideInterval = setInterval(
         nextSlide,
         intervalTime
@@ -972,38 +1016,44 @@
        NEXT BUTTON
        ======================================== */
 
-    nextButton.addEventListener("click", () => {
+    nextButton.addEventListener(
+      "click",
+      () => {
 
-      nextSlide();
+        nextSlide();
 
-      resetTimer();
+        resetTimer();
 
-    });
+      }
+    );
 
 
     /* ========================================
        PREVIOUS BUTTON
        ======================================== */
 
-    prevButton.addEventListener("click", () => {
+    prevButton.addEventListener(
+      "click",
+      () => {
 
-      previousSlide();
+        previousSlide();
 
-      resetTimer();
+        resetTimer();
 
-    });
+      }
+    );
 
 
     /* ========================================
-       GALERIE STARTEN
+       START
        ======================================== */
 
     startRandomGallery();
 
 
     /*
-      Nach 30 Sekunden zum nächsten
-      zufälligen Bild wechseln.
+      Automatischer Wechsel
+      alle 30 Sekunden
     */
 
     slideInterval = setInterval(
