@@ -47,6 +47,7 @@
 
     .slider {
       position: relative;
+
       width: 100vw;
       height: 100vh;
 
@@ -58,9 +59,9 @@
 
     /* ========================================
        SLIDES
-
+       
        NUR FADE
-       KEINE BEWEGUNG
+       KEINE SEITLICHE BEWEGUNG
        ======================================== */
 
     .slide {
@@ -72,30 +73,26 @@
       width: 100%;
       height: 100%;
 
-      /*
-        Weißer Hintergrund
-      */
-
       background-color: #ffffff !important;
-
-      /*
-        Bild vollständig anzeigen
-      */
 
       background-repeat: no-repeat;
       background-position: center center;
+
+      /*
+        Das komplette Bild bleibt sichtbar.
+        Freie Bereiche bleiben weiß.
+      */
       background-size: contain;
 
       /*
-        Unsichtbar
+        Startzustand:
+        unsichtbar
       */
-
       opacity: 0;
 
       /*
-        KEIN translateX / KEINE Bewegung
+        Nur Fade – keine Bewegung
       */
-
       transition: opacity 3s ease-in-out;
 
       z-index: 1;
@@ -561,6 +558,7 @@
 
     .buttons button:hover {
       background: #000000;
+
       color: #ffffff;
 
       transform: translateY(-50%) scale(1.1);
@@ -590,7 +588,7 @@
 
 
     /* ========================================
-       REDUZIERTE BEWEGUNG
+       REDUCED MOTION
        ======================================== */
 
     @media (prefers-reduced-motion: reduce) {
@@ -738,130 +736,229 @@
     const prevButton = document.getElementById("prev");
 
 
+    /* ========================================
+       EINSTELLUNGEN
+       ======================================== */
+
     /*
-      ========================================
-      EINSTELLUNGEN
-      ========================================
-
-      30 Sekunden Standdauer pro Bild
+      30 Sekunden pro Bild
     */
-
-    const auto = true;
-
     const intervalTime = 30000;
+
+    /*
+      Zeit für den Fade
+      Muss kleiner als intervalTime sein.
+    */
+    const fadeTime = 3000;
 
     let slideInterval;
 
+    /*
+      Hier wird die zufällige Reihenfolge gespeichert.
+    */
+    let randomOrder = [];
 
     /*
-      ========================================
-      NÄCHSTES BILD
-      ========================================
+      Position innerhalb der zufälligen Reihenfolge.
     */
-
-    const nextSlide = () => {
-
-      const current = document.querySelector(".current");
-
-      current.classList.remove("current");
+    let currentPosition = 0;
 
 
-      if (current.nextElementSibling) {
+    /* ========================================
+       ZUFÄLLIGE REIHENFOLGE ERSTELLEN
+       ======================================== */
 
-        current.nextElementSibling.classList.add("current");
+    function createRandomOrder() {
 
-      } else {
+      /*
+        Array mit allen Bildnummern erstellen.
+        Beispiel:
 
-        slides[0].classList.add("current");
+        [0, 1, 2, 3, ... 83]
+      */
 
-      }
-
-    };
-
-
-    /*
-      ========================================
-      VORHERIGES BILD
-      ========================================
-    */
-
-    const prevSlide = () => {
-
-      const current = document.querySelector(".current");
-
-      current.classList.remove("current");
+      randomOrder = Array.from(
+        { length: slides.length },
+        (_, index) => index
+      );
 
 
-      if (current.previousElementSibling) {
+      /*
+        Fisher-Yates Shuffle
 
-        current.previousElementSibling.classList.add("current");
+        Dadurch wird die Reihenfolge
+        wirklich zufällig gemischt.
+      */
 
-      } else {
+      for (let i = randomOrder.length - 1; i > 0; i--) {
 
-        slides[slides.length - 1].classList.add("current");
-
-      }
-
-    };
-
-
-    /*
-      ========================================
-      NEXT BUTTON
-      ========================================
-    */
-
-    nextButton.addEventListener("click", () => {
-
-      nextSlide();
-
-
-      if (auto) {
-
-        clearInterval(slideInterval);
-
-        slideInterval = setInterval(
-          nextSlide,
-          intervalTime
+        const j = Math.floor(
+          Math.random() * (i + 1)
         );
 
-      }
-
-    });
-
-
-    /*
-      ========================================
-      PREVIOUS BUTTON
-      ========================================
-    */
-
-    prevButton.addEventListener("click", () => {
-
-      prevSlide();
-
-
-      if (auto) {
-
-        clearInterval(slideInterval);
-
-        slideInterval = setInterval(
-          nextSlide,
-          intervalTime
-        );
+        [
+          randomOrder[i],
+          randomOrder[j]
+        ] = [
+          randomOrder[j],
+          randomOrder[i]
+        ];
 
       }
 
-    });
+    }
 
 
-    /*
-      ========================================
-      AUTOMATISCHER WECHSEL
-      ========================================
-    */
+    /* ========================================
+       ERSTEN ZUFÄLLIGEN SLIDE STARTEN
+       ======================================== */
 
-    if (auto) {
+    function startRandomGallery() {
+
+      createRandomOrder();
+
+      /*
+        Erstes zufälliges Bild auswählen
+      */
+
+      currentPosition = 0;
+
+      slides.forEach(slide => {
+        slide.classList.remove("current");
+      });
+
+      slides[
+        randomOrder[currentPosition]
+      ].classList.add("current");
+
+    }
+
+
+    /* ========================================
+       NÄCHSTES ZUFÄLLIGES BILD
+       ======================================== */
+
+    function nextSlide() {
+
+      currentPosition++;
+
+
+      /*
+        Wenn alle 84 Bilder gesehen wurden,
+        wird eine komplett neue Reihenfolge
+        erstellt.
+      */
+
+      if (currentPosition >= randomOrder.length) {
+
+        createRandomOrder();
+
+        currentPosition = 0;
+
+        /*
+          Verhindern, dass das letzte Bild
+          des alten Durchlaufs direkt wieder
+          als erstes Bild erscheint.
+        */
+
+        const previousSlide =
+          document.querySelector(".current");
+
+        const previousIndex =
+          Array.from(slides).indexOf(previousSlide);
+
+        if (
+          randomOrder.length > 1 &&
+          randomOrder[0] === previousIndex
+        ) {
+
+          const randomIndex =
+            Math.floor(
+              Math.random() * (randomOrder.length - 1)
+            ) + 1;
+
+          [
+            randomOrder[0],
+            randomOrder[randomIndex]
+          ] = [
+            randomOrder[randomIndex],
+            randomOrder[0]
+          ];
+
+        }
+
+      }
+
+
+      /*
+        Aktuelles Bild ausblenden
+      */
+
+      const current =
+        document.querySelector(".current");
+
+      if (current) {
+        current.classList.remove("current");
+      }
+
+
+      /*
+        Neues zufälliges Bild einblenden
+      */
+
+      const next =
+        slides[randomOrder[currentPosition]];
+
+      next.classList.add("current");
+
+    }
+
+
+    /* ========================================
+       VORHERIGES BILD
+       ======================================== */
+
+    function previousSlide() {
+
+      currentPosition--;
+
+
+      /*
+        Wenn wir am Anfang der Reihenfolge
+        angekommen sind, springen wir ans Ende.
+      */
+
+      if (currentPosition < 0) {
+
+        currentPosition =
+          randomOrder.length - 1;
+
+      }
+
+
+      const current =
+        document.querySelector(".current");
+
+      if (current) {
+        current.classList.remove("current");
+      }
+
+
+      const previous =
+        slides[randomOrder[currentPosition]];
+
+      previous.classList.add("current");
+
+    }
+
+
+    /* ========================================
+       TIMER ZURÜCKSETZEN
+       ======================================== */
+
+    function resetTimer() {
+
+      clearInterval(slideInterval);
 
       slideInterval = setInterval(
         nextSlide,
@@ -869,6 +966,50 @@
       );
 
     }
+
+
+    /* ========================================
+       NEXT BUTTON
+       ======================================== */
+
+    nextButton.addEventListener("click", () => {
+
+      nextSlide();
+
+      resetTimer();
+
+    });
+
+
+    /* ========================================
+       PREVIOUS BUTTON
+       ======================================== */
+
+    prevButton.addEventListener("click", () => {
+
+      previousSlide();
+
+      resetTimer();
+
+    });
+
+
+    /* ========================================
+       GALERIE STARTEN
+       ======================================== */
+
+    startRandomGallery();
+
+
+    /*
+      Nach 30 Sekunden zum nächsten
+      zufälligen Bild wechseln.
+    */
+
+    slideInterval = setInterval(
+      nextSlide,
+      intervalTime
+    );
 
   </script>
 
