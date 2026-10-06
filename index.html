@@ -15,9 +15,9 @@
   <style>
     @import url("https://fonts.googleapis.com/css2?family=Lexend:wght@400;700&display=swap");
 
-    /* =========================
+    /* ========================================
        GRUNDSTIL
-       ========================= */
+       ======================================== */
 
     * {
       box-sizing: border-box;
@@ -35,35 +35,33 @@
 
     body {
       font-family: "Lexend", sans-serif;
-
-      /* WICHTIG: Hintergrund wirklich weiß */
       background: #ffffff !important;
       color: #000000;
-
       overflow: hidden;
     }
 
 
-    /* =========================
+    /* ========================================
        SLIDER
-       ========================= */
+       ======================================== */
 
     .slider {
       position: relative;
-
       width: 100vw;
       height: 100vh;
 
       overflow: hidden;
 
-      /* Weißer Hintergrund */
       background: #ffffff !important;
     }
 
 
-    /* =========================
+    /* ========================================
        SLIDES
-       ========================= */
+
+       NUR FADE
+       KEINE BEWEGUNG
+       ======================================== */
 
     .slide {
       position: absolute;
@@ -75,54 +73,50 @@
       height: 100%;
 
       /*
-        WICHTIG:
-
-        contain sorgt dafür, dass das komplette
-        Bild sichtbar bleibt.
-
-        Bereiche außerhalb des Bildes bleiben weiß.
+        Weißer Hintergrund
       */
 
       background-color: #ffffff !important;
+
+      /*
+        Bild vollständig anzeigen
+      */
 
       background-repeat: no-repeat;
       background-position: center center;
       background-size: contain;
 
       /*
-        Anfangszustand:
-        leicht nach rechts verschoben
-        und unsichtbar
+        Unsichtbar
       */
 
       opacity: 0;
-      transform: translateX(50px);
 
       /*
-        Langsamer Fade + Slide
+        KEIN translateX / KEINE Bewegung
       */
 
-      transition:
-        opacity 2.5s ease-in-out,
-        transform 2.5s ease-in-out;
+      transition: opacity 3s ease-in-out;
 
       z-index: 1;
+
+      pointer-events: none;
     }
 
 
-    /* Aktuelles Bild */
+    /*
+      Aktuelles Bild
+    */
 
     .slide.current {
       opacity: 1;
-      transform: translateX(0);
-
       z-index: 2;
     }
 
 
-    /* =========================
+    /* ========================================
        BILDER 1 - 10
-       ========================= */
+       ======================================== */
 
     .slide:nth-child(1) {
       background-image: url("motivtion (1).png");
@@ -165,9 +159,9 @@
     }
 
 
-    /* =========================
+    /* ========================================
        BILDER 11 - 20
-       ========================= */
+       ======================================== */
 
     .slide:nth-child(11) {
       background-image: url("motivtion (11).png");
@@ -210,9 +204,9 @@
     }
 
 
-    /* =========================
+    /* ========================================
        BILDER 21 - 30
-       ========================= */
+       ======================================== */
 
     .slide:nth-child(21) {
       background-image: url("motivtion (21).png");
@@ -255,9 +249,9 @@
     }
 
 
-    /* =========================
+    /* ========================================
        BILDER 31 - 40
-       ========================= */
+       ======================================== */
 
     .slide:nth-child(31) {
       background-image: url("motivtion (31).png");
@@ -300,9 +294,9 @@
     }
 
 
-    /* =========================
+    /* ========================================
        BILDER 41 - 50
-       ========================= */
+       ======================================== */
 
     .slide:nth-child(41) {
       background-image: url("motivtion (41).png");
@@ -345,9 +339,9 @@
     }
 
 
-    /* =========================
+    /* ========================================
        BILDER 51 - 60
-       ========================= */
+       ======================================== */
 
     .slide:nth-child(51) {
       background-image: url("motivtion (51).png");
@@ -390,9 +384,9 @@
     }
 
 
-    /* =========================
+    /* ========================================
        BILDER 61 - 70
-       ========================= */
+       ======================================== */
 
     .slide:nth-child(61) {
       background-image: url("motivtion (61).png");
@@ -435,9 +429,9 @@
     }
 
 
-    /* =========================
+    /* ========================================
        BILDER 71 - 80
-       ========================= */
+       ======================================== */
 
     .slide:nth-child(71) {
       background-image: url("motivtion (71).png");
@@ -480,9 +474,9 @@
     }
 
 
-    /* =========================
+    /* ========================================
        BILDER 81 - 84
-       ========================= */
+       ======================================== */
 
     .slide:nth-child(81) {
       background-image: url("motivtion (81).png");
@@ -501,9 +495,9 @@
     }
 
 
-    /* =========================
-       BUTTONS
-       ========================= */
+    /* ========================================
+       NAVIGATION
+       ======================================== */
 
     .buttons {
       position: absolute;
@@ -518,6 +512,7 @@
 
       pointer-events: none;
     }
+
 
     .buttons button {
       position: absolute;
@@ -553,13 +548,16 @@
         transform 0.3s ease;
     }
 
+
     .buttons button#prev {
       left: 20px;
     }
 
+
     .buttons button#next {
       right: 20px;
     }
+
 
     .buttons button:hover {
       background: #000000;
@@ -569,9 +567,9 @@
     }
 
 
-    /* =========================
-       HANDY
-       ========================= */
+    /* ========================================
+       MOBILE
+       ======================================== */
 
     @media (max-width: 640px) {
 
@@ -591,19 +589,14 @@
     }
 
 
-    /* =========================
-       REDUCED MOTION
-       ========================= */
+    /* ========================================
+       REDUZIERTE BEWEGUNG
+       ======================================== */
 
     @media (prefers-reduced-motion: reduce) {
 
       .slide {
         transition: opacity 0.5s ease;
-        transform: none;
-      }
-
-      .slide.current {
-        transform: none;
       }
 
     }
@@ -614,9 +607,9 @@
 
 <body>
 
-  <!-- =========================
+  <!-- ========================================
        GALERIE
-       ========================= -->
+       ======================================== -->
 
   <div class="slider">
 
@@ -716,9 +709,9 @@
   </div>
 
 
-  <!-- =========================
+  <!-- ========================================
        NAVIGATION
-       ========================= -->
+       ======================================== -->
 
   <div class="buttons">
 
@@ -733,9 +726,9 @@
   </div>
 
 
-  <!-- =========================
+  <!-- ========================================
        JAVASCRIPT
-       ========================= -->
+       ======================================== -->
 
   <script>
 
@@ -744,17 +737,16 @@
     const nextButton = document.getElementById("next");
     const prevButton = document.getElementById("prev");
 
+
     /*
-      Automatischer Wechsel aktiviert
+      ========================================
+      EINSTELLUNGEN
+      ========================================
+
+      30 Sekunden Standdauer pro Bild
     */
 
     const auto = true;
-
-    /*
-      30 Sekunden pro Bild
-
-      30000 Millisekunden = 30 Sekunden
-    */
 
     const intervalTime = 30000;
 
@@ -762,9 +754,9 @@
 
 
     /*
-      =========================
+      ========================================
       NÄCHSTES BILD
-      =========================
+      ========================================
     */
 
     const nextSlide = () => {
@@ -772,6 +764,7 @@
       const current = document.querySelector(".current");
 
       current.classList.remove("current");
+
 
       if (current.nextElementSibling) {
 
@@ -787,9 +780,9 @@
 
 
     /*
-      =========================
+      ========================================
       VORHERIGES BILD
-      =========================
+      ========================================
     */
 
     const prevSlide = () => {
@@ -797,6 +790,7 @@
       const current = document.querySelector(".current");
 
       current.classList.remove("current");
+
 
       if (current.previousElementSibling) {
 
@@ -812,15 +806,16 @@
 
 
     /*
-      =========================
+      ========================================
       NEXT BUTTON
-      =========================
+      ========================================
     */
 
     nextButton.addEventListener("click", () => {
 
       nextSlide();
 
+
       if (auto) {
 
         clearInterval(slideInterval);
@@ -836,15 +831,16 @@
 
 
     /*
-      =========================
+      ========================================
       PREVIOUS BUTTON
-      =========================
+      ========================================
     */
 
     prevButton.addEventListener("click", () => {
 
       prevSlide();
 
+
       if (auto) {
 
         clearInterval(slideInterval);
@@ -860,9 +856,9 @@
 
 
     /*
-      =========================
+      ========================================
       AUTOMATISCHER WECHSEL
-      =========================
+      ========================================
     */
 
     if (auto) {
