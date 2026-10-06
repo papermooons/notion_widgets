@@ -1,94 +1,820 @@
-body {
-  font-family: "Lexend", sans-serif;
-  background-color: #ffffff;
-  color: #000000;
-}
+<!DOCTYPE html>
+<html lang="de">
 
-.slider {
-  position: relative;
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
-  background-color: #ffffff;
-}
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-.slide {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  <title>Meine Galerie</title>
 
-  /* Anfangszustand */
-  opacity: 0;
-  transform: translateX(40px);
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+  >
 
-  /* Sehr weicher, langsamer Übergang */
-  transition:
-    opacity 2.5s ease-in-out,
-    transform 2.5s ease-in-out;
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Lexend:wght@400;700&display=swap");
 
-  background-color: #ffffff;
-}
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-/* Aktuelles Bild */
-.slide.current {
-  opacity: 1;
-  transform: translateX(0);
-}
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+    }
 
-/* Erstes Bild */
-.slide:nth-child(1) {
-  background: url("motivtion (1).png") no-repeat center top/cover;
-}
+    body {
+      font-family: "Lexend", sans-serif;
+      background-color: #ffffff;
+      color: #000000;
+      overflow: hidden;
+    }
 
-/* Zweites Bild */
-.slide:nth-child(2) {
-  background: url("motivtion (2).png") no-repeat center top/cover;
-}
+    /* =========================
+       GALERIE
+       ========================= */
 
-/* Deine restlichen Bilder bleiben genauso wie bisher */
-.slide:nth-child(3) {
-  background: url("motivtion (3).png") no-repeat center top/cover;
-}
+    .slider {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      background-color: #ffffff;
+    }
 
-.slide:nth-child(4) {
-  background: url("motivtion (4).png") no-repeat center top/cover;
-}
+    .slide {
+      position: absolute;
+      top: 0;
+      left: 0;
 
-/* ... deine Slides 5 bis 83 ... */
+      width: 100%;
+      height: 100%;
 
-.slide:nth-child(84) {
-  background: url("motivtion.png") no-repeat center top/cover;
-}
+      /*
+        Startposition:
+        leicht nach rechts verschoben
+        und unsichtbar
+      */
+      opacity: 0;
+      transform: translateX(40px);
+
+      /*
+        Langsamer und weicher Übergang
+      */
+      transition:
+        opacity 2.5s ease-in-out,
+        transform 2.5s ease-in-out;
+
+      background-color: #ffffff;
+    }
+
+    /*
+      Aktuelles Bild
+    */
+    .slide.current {
+      opacity: 1;
+      transform: translateX(0);
+      z-index: 2;
+    }
 
 
-/* Buttons */
+    /* =========================
+       BILDER 1 - 10
+       ========================= */
 
-.buttons button#prev {
-  position: absolute;
-  top: 50%;
-  left: 1rem;
-}
+    .slide:nth-child(1) {
+      background: url("motivtion (1).png") no-repeat center top / cover;
+    }
 
-.buttons button#next {
-  position: absolute;
-  top: 50%;
-  right: 1rem;
-}
+    .slide:nth-child(2) {
+      background: url("motivtion (2).png") no-repeat center top / cover;
+    }
 
-.buttons button {
-  border: 2px solid #000000;
-  background-color: transparent;
-  color: #000000;
-  cursor: pointer;
-  padding: 3px 5px;
-  border-radius: 50%;
-  outline: none;
-  transition: all 0.3s ease;
-}
+    .slide:nth-child(3) {
+      background: url("motivtion (3).png") no-repeat center top / cover;
+    }
 
-.buttons button:hover {
-  background-color: #000000;
-  color: #ffffff;
-}
+    .slide:nth-child(4) {
+      background: url("motivtion (4).png") no-repeat center top / cover;
+    }
+
+    .slide:nth-child(5) {
+      background: url("motivtion (5).png") no-repeat center top / cover;
+    }
+
+    .slide:nth-child(6) {
+      background: url("motivtion (6).png") no-repeat center top / cover;
+    }
+
+    .slide:nth-child(7) {
+      background: url("motivtion (7).png") no-repeat center top / cover;
+    }
+
+    .slide:nth-child(8) {
+      background: url("motivtion (8).png") no-repeat center top / cover;
+    }
+
+    .slide:nth-child(9) {
+      background: url("motivtion (9).png") no-repeat center top / cover;
+    }
+
+    .slide:nth-child(10) {
+      background: url("motivtion (10).png") no-repeat center top / cover;
+    }
+
+
+    /* =========================
+       BILDER 11 - 20
+       ========================= */
+
+    .slide:nth-child(11) {
+      background: url("motivtion (11).png") no-repeat center top / cover;
+    }
+
+    .slide:nth-child(12) {
+      background: url("motivtion (12).png") no-repeat center top / cover;
+    }
+
+    .slide:nth-child(13) {
+      background: url("motivtion (13).png") no-repeat center top / cover;
+    }
+
+    .slide:nth-child(14) {
+      background: url("motivtion (14).png") no-repeat center top / cover;
+    }
+
+    .slide:nth-child(15) {
+      background: url("motivtion (15).png") no-repeat center top / cover;
+    }
+
+    .slide:nth-child(16) {
+      background: url("motivtion (16).png") no-repeat center top / cover;
+    }
+
+    .slide:nth-child(17) {
+      background: url("motivtion (17).png") no-repeat center top / cover;
+    }
+
+    .slide:nth-child(18) {
+      background: url("motivtion (18).png") no-repeat center top / cover;
+    }
+
+    .slide:nth-child(19) {
+      background: url("motivtion (19).png") no-repeat center top / cover;
+    }
+
+    .slide:nth-child(20) {
+      background: url("motivtion (20).png") no-repeat center top / cover;
+    }
+
+
+    /* =========================
+       BILDER 21 - 30
+       ========================= */
+
+    .slide:nth-child(21) {
+      background: url("motivtion (21).png") no-repeat center top / cover;
+    }
+
+    .slide:nth-child(22) {
+      background: url("motivtion (22).png") no-repeat center top / cover;
+    }
+
+    .slide:nth-child(23) {
+      background: url("motivtion (23).png") no-repeat center top / cover;
+    }
+
+    .slide:nth-child(24) {
+      background: url("motivtion (24).png") no-repeat center top / cover;
+    }
+
+    .slide:nth-child(25) {
+      background: url("motivtion (25).png") no-repeat center top / cover;
+    }
+
+    .slide:nth-child(26) {
+      background: url("motivtion (26).png") no-repeat center top / cover;
+    }
+
+    .slide:nth-child(27) {
+      background: url("motivtion (27).png") no-repeat center top / cover;
+    }
+
+    .slide:nth-child(28) {
+      background: url("motivtion (28).png") no-repeat center top / cover;
+    }
+
+    .slide:nth-child(29) {
+      background: url("motivtion (29).png") no-repeat center top / cover;
+    }
+
+    .slide:nth-child(30) {
+      background: url("motivtion (30).png") no-repeat center top / cover;
+    }
+
+
+    /* =========================
+       BILDER 31 - 40
+       ========================= */
+
+    .slide:nth-child(31) {
+      background: url("motivtion (31).png") no-repeat center top / cover;
+    }
+
+    .slide:nth-child(32) {
+      background: url("motivtion (32).png") no-repeat center top / cover;
+    }
+
+    .slide:nth-child(33) {
+      background: url("motivtion (33).png") no-repeat center top / cover;
+    }
+
+    .slide:nth-child(34) {
+      background: url("motivtion (34).png") no-repeat center top / cover;
+    }
+
+    .slide:nth-child(35) {
+      background: url("motivtion (35).png") no-repeat center top / cover;
+    }
+
+    .slide:nth-child(36) {
+      background: url("motivtion (36).png") no-repeat center top / cover;
+    }
+
+    .slide:nth-child(37) {
+      background: url("motivtion (37).png") no-repeat center top / cover;
+    }
+
+    .slide:nth-child(38) {
+      background: url("motivtion (38).png") no-repeat center top / cover;
+    }
+
+    .slide:nth-child(39) {
+      background: url("motivtion (39).png") no-repeat center top / cover;
+    }
+
+    .slide:nth-child(40) {
+      background: url("motivtion (40).png") no-repeat center top / cover;
+    }
+
+
+    /* =========================
+       BILDER 41 - 50
+       ========================= */
+
+    .slide:nth-child(41) {
+      background: url("motivtion (41).png") no-repeat center top / cover;
+    }
+
+    .slide:nth-child(42) {
+      background: url("motivtion (42).png") no-repeat center top / cover;
+    }
+
+    .slide:nth-child(43) {
+      background: url("motivtion (43).png") no-repeat center top / cover;
+    }
+
+    .slide:nth-child(44) {
+      background: url("motivtion (44).png") no-repeat center top / cover;
+    }
+
+    .slide:nth-child(45) {
+      background: url("motivtion (45).png") no-repeat center top / cover;
+    }
+
+    .slide:nth-child(46) {
+      background: url("motivtion (46).png") no-repeat center top / cover;
+    }
+
+    .slide:nth-child(47) {
+      background: url("motivtion (47).png") no-repeat center top / cover;
+    }
+
+    .slide:nth-child(48) {
+      background: url("motivtion (48).png") no-repeat center top / cover;
+    }
+
+    .slide:nth-child(49) {
+      background: url("motivtion (49).png") no-repeat center top / cover;
+    }
+
+    .slide:nth-child(50) {
+      background: url("motivtion (50).png") no-repeat center top / cover;
+    }
+
+
+    /* =========================
+       BILDER 51 - 60
+       ========================= */
+
+    .slide:nth-child(51) {
+      background: url("motivtion (51).png") no-repeat center top / cover;
+    }
+
+    .slide:nth-child(52) {
+      background: url("motivtion (52).png") no-repeat center top / cover;
+    }
+
+    .slide:nth-child(53) {
+      background: url("motivtion (53).png") no-repeat center top / cover;
+    }
+
+    .slide:nth-child(54) {
+      background: url("motivtion (54).png") no-repeat center top / cover;
+    }
+
+    .slide:nth-child(55) {
+      background: url("motivtion (55).png") no-repeat center top / cover;
+    }
+
+    .slide:nth-child(56) {
+      background: url("motivtion (56).png") no-repeat center top / cover;
+    }
+
+    .slide:nth-child(57) {
+      background: url("motivtion (57).png") no-repeat center top / cover;
+    }
+
+    .slide:nth-child(58) {
+      background: url("motivtion (58).png") no-repeat center top / cover;
+    }
+
+    .slide:nth-child(59) {
+      background: url("motivtion (59).png") no-repeat center top / cover;
+    }
+
+    .slide:nth-child(60) {
+      background: url("motivtion (60).png") no-repeat center top / cover;
+    }
+
+
+    /* =========================
+       BILDER 61 - 70
+       ========================= */
+
+    .slide:nth-child(61) {
+      background: url("motivtion (61).png") no-repeat center top / cover;
+    }
+
+    .slide:nth-child(62) {
+      background: url("motivtion (62).png") no-repeat center top / cover;
+    }
+
+    .slide:nth-child(63) {
+      background: url("motivtion (63).png") no-repeat center top / cover;
+    }
+
+    .slide:nth-child(64) {
+      background: url("motivtion (64).png") no-repeat center top / cover;
+    }
+
+    .slide:nth-child(65) {
+      background: url("motivtion (65).png") no-repeat center top / cover;
+    }
+
+    .slide:nth-child(66) {
+      background: url("motivtion (66).png") no-repeat center top / cover;
+    }
+
+    .slide:nth-child(67) {
+      background: url("motivtion (67).png") no-repeat center top / cover;
+    }
+
+    .slide:nth-child(68) {
+      background: url("motivtion (68).png") no-repeat center top / cover;
+    }
+
+    .slide:nth-child(69) {
+      background: url("motivtion (69).png") no-repeat center top / cover;
+    }
+
+    .slide:nth-child(70) {
+      background: url("motivtion (70).png") no-repeat center top / cover;
+    }
+
+
+    /* =========================
+       BILDER 71 - 80
+       ========================= */
+
+    .slide:nth-child(71) {
+      background: url("motivtion (71).png") no-repeat center top / cover;
+    }
+
+    .slide:nth-child(72) {
+      background: url("motivtion (72).png") no-repeat center top / cover;
+    }
+
+    .slide:nth-child(73) {
+      background: url("motivtion (73).png") no-repeat center top / cover;
+    }
+
+    .slide:nth-child(74) {
+      background: url("motivtion (74).png") no-repeat center top / cover;
+    }
+
+    .slide:nth-child(75) {
+      background: url("motivtion (75).png") no-repeat center top / cover;
+    }
+
+    .slide:nth-child(76) {
+      background: url("motivtion (76).png") no-repeat center top / cover;
+    }
+
+    .slide:nth-child(77) {
+      background: url("motivtion (77).png") no-repeat center top / cover;
+    }
+
+    .slide:nth-child(78) {
+      background: url("motivtion (78).png") no-repeat center top / cover;
+    }
+
+    .slide:nth-child(79) {
+      background: url("motivtion (79).png") no-repeat center top / cover;
+    }
+
+    .slide:nth-child(80) {
+      background: url("motivtion (80).png") no-repeat center top / cover;
+    }
+
+
+    /* =========================
+       BILDER 81 - 84
+       ========================= */
+
+    .slide:nth-child(81) {
+      background: url("motivtion (81).png") no-repeat center top / cover;
+    }
+
+    .slide:nth-child(82) {
+      background: url("motivtion (82).png") no-repeat center top / cover;
+    }
+
+    .slide:nth-child(83) {
+      background: url("motivtion (83).png") no-repeat center top / cover;
+    }
+
+    .slide:nth-child(84) {
+      background: url("motivtion.png") no-repeat center top / cover;
+    }
+
+
+    /* =========================
+       NAVIGATION
+       ========================= */
+
+    .buttons {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 10;
+    }
+
+    .buttons button {
+      position: absolute;
+
+      top: 50%;
+      transform: translateY(-50%);
+
+      width: 42px;
+      height: 42px;
+
+      border: 2px solid #000000;
+      background-color: rgba(255, 255, 255, 0.75);
+      color: #000000;
+
+      cursor: pointer;
+      border-radius: 50%;
+      outline: none;
+
+      pointer-events: auto;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      transition:
+        background-color 0.3s ease,
+        color 0.3s ease,
+        transform 0.3s ease;
+    }
+
+    .buttons button#prev {
+      left: 20px;
+    }
+
+    .buttons button#next {
+      right: 20px;
+    }
+
+    .buttons button:hover {
+      background-color: #000000;
+      color: #ffffff;
+      transform: translateY(-50%) scale(1.08);
+    }
+
+
+    /* =========================
+       MOBILE
+       ========================= */
+
+    @media (max-width: 640px) {
+
+      .buttons button {
+        width: 36px;
+        height: 36px;
+      }
+
+      .buttons button#prev {
+        left: 10px;
+      }
+
+      .buttons button#next {
+        right: 10px;
+      }
+
+    }
+
+
+    /* =========================
+       REDUZIERTE BEWEGUNG
+       ========================= */
+
+    @media (prefers-reduced-motion: reduce) {
+
+      .slide {
+        transition: opacity 0.5s ease;
+        transform: none;
+      }
+
+      .slide.current {
+        transform: none;
+      }
+
+    }
+  </style>
+</head>
+
+
+<body>
+
+  <div class="slider">
+
+    <div class="slide current"></div>
+    <div class="slide"></div>
+    <div class="slide"></div>
+    <div class="slide"></div>
+    <div class="slide"></div>
+    <div class="slide"></div>
+    <div class="slide"></div>
+    <div class="slide"></div>
+    <div class="slide"></div>
+    <div class="slide"></div>
+
+    <div class="slide"></div>
+    <div class="slide"></div>
+    <div class="slide"></div>
+    <div class="slide"></div>
+    <div class="slide"></div>
+    <div class="slide"></div>
+    <div class="slide"></div>
+    <div class="slide"></div>
+    <div class="slide"></div>
+    <div class="slide"></div>
+
+    <div class="slide"></div>
+    <div class="slide"></div>
+    <div class="slide"></div>
+    <div class="slide"></div>
+    <div class="slide"></div>
+    <div class="slide"></div>
+    <div class="slide"></div>
+    <div class="slide"></div>
+    <div class="slide"></div>
+    <div class="slide"></div>
+
+    <div class="slide"></div>
+    <div class="slide"></div>
+    <div class="slide"></div>
+    <div class="slide"></div>
+    <div class="slide"></div>
+    <div class="slide"></div>
+    <div class="slide"></div>
+    <div class="slide"></div>
+    <div class="slide"></div>
+    <div class="slide"></div>
+
+    <div class="slide"></div>
+    <div class="slide"></div>
+    <div class="slide"></div>
+    <div class="slide"></div>
+    <div class="slide"></div>
+    <div class="slide"></div>
+    <div class="slide"></div>
+    <div class="slide"></div>
+    <div class="slide"></div>
+    <div class="slide"></div>
+
+    <div class="slide"></div>
+    <div class="slide"></div>
+    <div class="slide"></div>
+    <div class="slide"></div>
+    <div class="slide"></div>
+    <div class="slide"></div>
+    <div class="slide"></div>
+    <div class="slide"></div>
+    <div class="slide"></div>
+    <div class="slide"></div>
+
+    <div class="slide"></div>
+    <div class="slide"></div>
+    <div class="slide"></div>
+    <div class="slide"></div>
+    <div class="slide"></div>
+    <div class="slide"></div>
+    <div class="slide"></div>
+    <div class="slide"></div>
+    <div class="slide"></div>
+    <div class="slide"></div>
+
+    <div class="slide"></div>
+    <div class="slide"></div>
+    <div class="slide"></div>
+    <div class="slide"></div>
+    <div class="slide"></div>
+    <div class="slide"></div>
+    <div class="slide"></div>
+    <div class="slide"></div>
+    <div class="slide"></div>
+    <div class="slide"></div>
+
+    <div class="slide"></div>
+    <div class="slide"></div>
+    <div class="slide"></div>
+    <div class="slide"></div>
+
+  </div>
+
+
+  <!-- Navigation -->
+
+  <div class="buttons">
+
+    <button id="prev" aria-label="Vorheriges Bild">
+      <i class="fas fa-arrow-left"></i>
+    </button>
+
+    <button id="next" aria-label="Nächstes Bild">
+      <i class="fas fa-arrow-right"></i>
+    </button>
+
+  </div>
+
+
+  <script>
+
+    /*
+      ==========================================
+      EINSTELLUNGEN
+      ==========================================
+    */
+
+    const slides = document.querySelectorAll(".slide");
+
+    const nextButton = document.getElementById("next");
+    const prevButton = document.getElementById("prev");
+
+    const auto = true;
+
+    /*
+      30 Sekunden pro Bild
+
+      30.000 Millisekunden = 30 Sekunden
+    */
+    const intervalTime = 30000;
+
+    let slideInterval;
+
+
+    /*
+      ==========================================
+      NÄCHSTES BILD
+      ==========================================
+    */
+
+    const nextSlide = () => {
+
+      const current = document.querySelector(".current");
+
+      current.classList.remove("current");
+
+      if (current.nextElementSibling) {
+
+        current.nextElementSibling.classList.add("current");
+
+      } else {
+
+        slides[0].classList.add("current");
+
+      }
+
+    };
+
+
+    /*
+      ==========================================
+      VORHERIGES BILD
+      ==========================================
+    */
+
+    const prevSlide = () => {
+
+      const current = document.querySelector(".current");
+
+      current.classList.remove("current");
+
+      if (current.previousElementSibling) {
+
+        current.previousElementSibling.classList.add("current");
+
+      } else {
+
+        slides[slides.length - 1].classList.add("current");
+
+      }
+
+    };
+
+
+    /*
+      ==========================================
+      NEXT BUTTON
+      ==========================================
+    */
+
+    nextButton.addEventListener("click", () => {
+
+      nextSlide();
+
+      if (auto) {
+
+        clearInterval(slideInterval);
+
+        slideInterval = setInterval(
+          nextSlide,
+          intervalTime
+        );
+
+      }
+
+    });
+
+
+    /*
+      ==========================================
+      PREVIOUS BUTTON
+      ==========================================
+    */
+
+    prevButton.addEventListener("click", () => {
+
+      prevSlide();
+
+      if (auto) {
+
+        clearInterval(slideInterval);
+
+        slideInterval = setInterval(
+          nextSlide,
+          intervalTime
+        );
+
+      }
+
+    });
+
+
+    /*
+      ==========================================
+      AUTOMATISCHER WECHSEL
+      ==========================================
+    */
+
+    if (auto) {
+
+      slideInterval = setInterval(
+        nextSlide,
+        intervalTime
+      );
+
+    }
+
+  </script>
+
+</body>
+
+</html>
